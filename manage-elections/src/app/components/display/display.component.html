@@ -36,7 +36,8 @@
             <mat-cell *matCellDef="let selector">{{selector.company.name}}</mat-cell>
         </ng-container> 
         <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-        <mat-row *matRowDef="let row; columns: displayedColumns" (click)="onSelectRow(row)"></mat-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns" [ngClass]="{'highlight': selectedRowIndex == row.id}"
+             (click)="onSelectRow(row)"></mat-row>
     </mat-table>
     <mat-paginator #paginator
         [pageSize]="defaultPageSize"

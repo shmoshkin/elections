@@ -27,6 +27,7 @@ export class DisplayComponent implements OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
   selection = new SelectionModel<Selector>(true, []);
+  selectedRowIndex: number = -1;
 
   constructor(private crudService: CrudService) { }
 
@@ -49,7 +50,7 @@ export class DisplayComponent implements OnInit {
   }
 
   onSelectRow(row){
-    
+    this.selectedRowIndex = row.id;
   }
 
   isAllSelected() {
