@@ -7,3 +7,10 @@ export interface Selector{
         name: string;
     };
 }
+
+export interface User{
+    name: string;
+    userName: string;
+    password: string;
+    isManager: boolean;
+}
