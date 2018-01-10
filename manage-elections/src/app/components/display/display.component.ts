@@ -26,7 +26,7 @@ export class DisplayComponent implements OnInit {
   arrPagesSize = [5,10,20];
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
-  selection = new SelectionModel<Selector>(true, []);
+  selectedRowIndex = -1;
 
   constructor(private crudService: CrudService) { }
 
@@ -49,19 +49,11 @@ export class DisplayComponent implements OnInit {
   }
 
   onSelectRow(row){
-    
+    this.selectedRowIndex = row.id;
   }
 
-  isAllSelected() {
-    const numSelected = this.selection.selected.length;
-    const numRows = this.dataSource.data.length;
-    return numSelected === numRows;
-  }
+  isSelectedRow(row){
 
-  /** Selects all rows if they are not all selected; otherwise clear selection. */
-  masterToggle() {
-    this.isAllSelected() ?
-        this.selection.clear() :
-        this.dataSource.data.forEach(row => this.selection.select(row));
+    return (this.selectedRowIndex == row.id);
   }
 }

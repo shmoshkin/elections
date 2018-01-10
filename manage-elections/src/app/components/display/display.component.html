@@ -4,21 +4,7 @@
             <input matInput (keyup)="applyFilter($event.target.value)" placeholder="filter">
         </mat-form-field>
     </div>
-    <mat-table #table [dataSource]="dataSource" matSort>
-        <ng-container matColumnDef="select">
-            <mat-header-cell *matHeaderCellDef>
-                <mat-checkbox (change)="$event ? masterToggle() : null"
-                            [checked]="selection.hasValue() && isAllSelected()"
-                            [indeterminate]="selection.hasValue() && !isAllSelected()">
-                </mat-checkbox>
-            </mat-header-cell>
-            <mat-cell *matCellDef="let row">
-                <mat-checkbox (click)="$event.stopPropagation()"
-                            (change)="$event ? selection.toggle(row) : null"
-                            [checked]="selection.isSelected(row)">
-                </mat-checkbox>
-            </mat-cell>
-        </ng-container>
+    <mat-table #table [dataSource]="dataSource" matSort style="cursor: pointer;">
         <ng-container matColumnDef="name">
             <mat-header-cell *matHeaderCellDef mat-sort-header> Name </mat-header-cell>
             <mat-cell *matCellDef="let selector">{{selector.name}}</mat-cell>
@@ -36,7 +22,10 @@
             <mat-cell *matCellDef="let selector">{{selector.company.name}}</mat-cell>
         </ng-container> 
         <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-        <mat-row *matRowDef="let row; columns: displayedColumns" (click)="onSelectRow(row)"></mat-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns"
+            [ngClass]="{'highlight': isSelectedRow(row) }"
+            (click)="onSelectRow(row)">
+        </mat-row>
     </mat-table>
     <mat-paginator #paginator
         [pageSize]="defaultPageSize"

@@ -12,12 +12,13 @@ export class CrudService {
   getSelectors():Promise<any>{
 
     return this.http.get<Selector[]>(this.serviceUrl).toPromise();
-    // .then((result : any) => {
-    //     return result;
-    // })
-    // .catch((result: any) => {
-    //   return null;
-    // });
-    // return this.http.get<Selector[]>(this.serviceUrl);
+  }
+
+  update(id : String, field: String, value : any){
+
+  }
+
+  create(model : Selector){
+
   }
 }
