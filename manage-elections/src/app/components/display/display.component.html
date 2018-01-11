@@ -1,24 +1,24 @@
 <div class="example-container mat-elevation-z8">
     <div style="margin-left: 1%;">
-        <mat-form-field>
-            <input matInput (keyup)="applyFilter($event.target.value)" placeholder="filter">
+        <mat-form-field style="text-align: right;">
+            <input matInput (keyup)="applyFilter($event.target.value)" placeholder="..חיפוש">
         </mat-form-field>
     </div>
     <mat-table #table [dataSource]="dataSource" matSort style="cursor: pointer;">
         <ng-container matColumnDef="name">
-            <mat-header-cell *matHeaderCellDef mat-sort-header> Name </mat-header-cell>
+            <mat-header-cell *matHeaderCellDef mat-sort-header> שם </mat-header-cell>
             <mat-cell *matCellDef="let selector">{{selector.name}}</mat-cell>
         </ng-container> 
         <ng-container matColumnDef="email">
-            <mat-header-cell *matHeaderCellDef mat-sort-header> Email </mat-header-cell>
+            <mat-header-cell *matHeaderCellDef mat-sort-header> מייל </mat-header-cell>
             <mat-cell *matCellDef="let selector">{{selector.email}}</mat-cell>
         </ng-container> 
         <ng-container matColumnDef="phone">
-            <mat-header-cell *matHeaderCellDef mat-sort-header> Phone </mat-header-cell>
+            <mat-header-cell *matHeaderCellDef mat-sort-header> טלפון </mat-header-cell>
             <mat-cell *matCellDef="let selector">{{selector.phone}}</mat-cell>
         </ng-container> 
         <ng-container matColumnDef="company">
-            <mat-header-cell *matHeaderCellDef mat-sort-header> Company </mat-header-cell>
+            <mat-header-cell *matHeaderCellDef mat-sort-header> חברה </mat-header-cell>
             <mat-cell *matCellDef="let selector">{{selector.company.name}}</mat-cell>
         </ng-container> 
         <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
