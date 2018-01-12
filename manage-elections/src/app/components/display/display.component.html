@@ -1,10 +1,16 @@
 <div class="container mat-elevation-z8">
     <div>
-        <mat-form-field class="hebrew-text" style="float: right;margin-right: 4%;">
-            <input matInput (keyup)="applyFilter($event.target.value)" placeholder="חיפוש...">
-        </mat-form-field>
+        <div>
+            <mat-form-field class="hebrew-text" style="float: right;margin-right: 2%;">
+                <input matInput (keyup)="applyFilter($event.target.value)" placeholder="חיפוש...">
+            </mat-form-field>
+        </div>
+        <div style="margin-top: 2%;">           
+            <mat-icon (click)="loadData()" style="cursor: pointer;font-size: 30px;">refresh</mat-icon>
+        </div>
     </div>
-    <mat-table #table [dataSource]="dataSource" matSort style="cursor: pointer;">
+    
+    <mat-table #table [dataSource]="dataSource" matSort style="cursor: context-menu;">
         <ng-container matColumnDef="name">
             <mat-header-cell *matHeaderCellDef mat-sort-header class="stick"> שם </mat-header-cell>
             <mat-cell *matCellDef="let selector">{{selector.name}}</mat-cell>
