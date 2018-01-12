@@ -1,4 +1,6 @@
-.example-container {
+@import url("../../app.component.css");
+
+.container {
     display: flex;
     flex-direction: column;
     min-width: 300px;
@@ -7,6 +9,12 @@
   .mat-table {
     overflow: auto;
     max-height: 500px;
+  }
+
+  .mat-header-row {
+    position: sticky;
+    top: 0;
+    background: white;
   }
   
   .mat-header-cell.mat-sort-header-sorted {
@@ -17,7 +25,12 @@
     overflow: initial;
   }
 
+  ::ng-deep .mat-sort-header-container {
+    display:flex;
+    justify-content:center;
+  }
+
   .highlight{
-    background: #87CEFA; /* green */
+    background: #F5F5F5;
   }
   

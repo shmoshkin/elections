@@ -1,12 +1,12 @@
-<div class="example-container mat-elevation-z8">
-    <div style="margin-left: 1%;">
-        <mat-form-field style="text-align: right;">
-            <input matInput (keyup)="applyFilter($event.target.value)" placeholder="..חיפוש">
+<div class="container mat-elevation-z8">
+    <div>
+        <mat-form-field class="hebrew-text" style="float: right;margin-right: 4%;">
+            <input matInput (keyup)="applyFilter($event.target.value)" placeholder="חיפוש...">
         </mat-form-field>
     </div>
     <mat-table #table [dataSource]="dataSource" matSort style="cursor: pointer;">
         <ng-container matColumnDef="name">
-            <mat-header-cell *matHeaderCellDef mat-sort-header> שם </mat-header-cell>
+            <mat-header-cell *matHeaderCellDef mat-sort-header class="stick"> שם </mat-header-cell>
             <mat-cell *matCellDef="let selector">{{selector.name}}</mat-cell>
         </ng-container> 
         <ng-container matColumnDef="email">
@@ -24,7 +24,8 @@
         <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
         <mat-row *matRowDef="let row; columns: displayedColumns"
             [ngClass]="{'highlight': isSelectedRow(row) }"
-            (click)="onSelectRow(row)">
+            (click)="onSelectRow(row)"
+            class="center-text">
         </mat-row>
     </mat-table>
     <mat-paginator #paginator

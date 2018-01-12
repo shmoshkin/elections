@@ -82,6 +82,7 @@ export class DisplayComponent implements OnInit {
       if(bIsToggle){
 
         this.prevSelectedRowIndex = -1;
+        this.selectedRowIndex = -1;
       }
     }
 
