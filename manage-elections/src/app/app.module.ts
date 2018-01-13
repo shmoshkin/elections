@@ -3,6 +3,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {HttpClientModule} from '@angular/common/http';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { CommonModule } from '@angular/common';
+
+// Components
 import { AppComponent } from './app.component';
 import { NavigationComponent } from './components/navigation/navigation.component';
 import { DisplayComponent } from './components/display/display.component';
@@ -15,6 +18,7 @@ import {CrudService} from './services/crud-service/crud.service';
 
 // Other
 import { MaterialModule } from './material.module';
+import { AppRoutingModule }     from './routing.module';
 
 @NgModule({
   declarations: [
@@ -26,7 +30,9 @@ import { MaterialModule } from './material.module';
     BrowserModule,
     MaterialModule,
     HttpClientModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    CommonModule,
+    AppRoutingModule
   ],
   providers: [CrudService],
   bootstrap: [AppComponent]

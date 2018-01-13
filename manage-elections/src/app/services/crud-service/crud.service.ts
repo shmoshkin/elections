@@ -11,7 +11,7 @@ export class CrudService {
 
   getSelectors():Promise<any>{
 
-    return this.http.get<Selector[]>(this.serviceUrl).toPromise();
+    return this.http.get<Selector[]>('/api/selectors').toPromise();
   }
 
   update(id : String, field: String, value : any){

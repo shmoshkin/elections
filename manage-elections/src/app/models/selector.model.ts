@@ -1,15 +1,16 @@
 export interface Selector{
-    id: number;
-    name: string;
-    age: number;
-    email: string;
-    phone: string;
-    selectionStatus : SelectionStatus;
+    id: Number;
+    name: String;
+    age: Number;
+    email: String;
+    phone: String;
+    selection_status : SelectionStatus;
     adress: {
         street: String;
-        number: number;
+        number: Number;
     }
     company: {
-        name: string;
+        name: String;
     };
+    created_at: Date;
 }
