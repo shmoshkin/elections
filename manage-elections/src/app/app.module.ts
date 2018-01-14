@@ -9,12 +9,12 @@ import { CommonModule } from '@angular/common';
 import { AppComponent } from './app.component';
 import { NavigationComponent } from './components/navigation/navigation.component';
 import { DisplayComponent } from './components/display/display.component';
+import { AdministratorComponent } from './components/display/administrator/administrator.component';
 
 // Services
 import {CrudService} from './services/crud-service/crud.service';
 
 // Directives
-
 
 // Other
 import { MaterialModule } from './material.module';
@@ -24,7 +24,8 @@ import { AppRoutingModule }     from './routing.module';
   declarations: [
     AppComponent,
     NavigationComponent,
-    DisplayComponent
+    DisplayComponent,
+    AdministratorComponent
   ],
   imports: [
     BrowserModule,
