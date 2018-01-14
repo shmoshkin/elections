@@ -1,0 +1,9 @@
+.toolbarButtons {
+    display: flex;
+    justify-content: center;
+}
+
+.toolbarButtons button {
+    margin-left: 4vw;
+    margin-top: 1vw;
+}
