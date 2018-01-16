@@ -3,6 +3,8 @@ const express = require('express');
 const path = require('path');
 const http = require('http');
 const bodyParser = require('body-parser');
+const mongoose = require('mongoose');
+mongoose.connect('mongodb://shmoshkin:a1m2i3t4@ds255347.mlab.com:55347/elections');
 
 // Get our API routes
 const api = require('./server/routes/api');

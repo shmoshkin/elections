@@ -1,10 +1,9 @@
-// grab the things we need
-var mongoose = require('mongoose');
+
 var Schema = mongoose.Schema;
 
 // create a schema
 var selectorSchema = new Schema({
-    id: Number,
+    id: { type: Number, required: true, unique: true },
     name: String,
     age: Number,
     email: String,

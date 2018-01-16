@@ -6,7 +6,6 @@ import {Selector} from '../../models/Selector.model';
 @Injectable()
 export class CrudService {
 
-  private serviceUrl = 'https://jsonplaceholder.typicode.com/users';
   constructor(private http: HttpClient) { }
 
   getSelectors():Promise<any>{
