@@ -9,6 +9,7 @@ import { CommonModule } from '@angular/common';
 import { AppComponent } from './app.component';
 import { NavigationComponent } from './components/navigation/navigation.component';
 import { DisplayComponent } from './components/display/display.component';
+import {SelectorCardComponent} from './components/selector-card/selector-card/selector.card.component'
 
 // Services
 import {CrudService} from './services/crud-service/crud.service';
@@ -24,7 +25,8 @@ import { AppRoutingModule }     from './routing.module';
   declarations: [
     AppComponent,
     NavigationComponent,
-    DisplayComponent
+    DisplayComponent,
+    SelectorCardComponent
   ],
   imports: [
     BrowserModule,
@@ -33,6 +35,9 @@ import { AppRoutingModule }     from './routing.module';
     BrowserAnimationsModule,
     CommonModule,
     AppRoutingModule
+  ],
+  entryComponents: [
+    SelectorCardComponent
   ],
   providers: [CrudService],
   bootstrap: [AppComponent]

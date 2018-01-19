@@ -1,11 +1,8 @@
 // Angular
 import {Component, OnInit, ViewChild} from '@angular/core';
-import {MatPaginator, MatTableDataSource, MatSort, MatSnackBar} from '@angular/material';
+import {MatPaginator, MatTableDataSource, MatSort, MatSnackBar, MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 import {DataSource} from '@angular/cdk/collections';
 import {SelectionModel} from '@angular/cdk/collections';
-
-// Rxjs
-import {Observable} from 'rxjs/Observable';
 
 // Models
 import {Selector} from '../../models/Selector.model';
@@ -14,6 +11,8 @@ import {Selector} from '../../models/Selector.model';
 import {CrudService} from '../../services/crud-service/crud.service';
 import { Message } from '@angular/compiler/src/i18n/i18n_ast';
 
+// Components
+import {SelectorCardComponent} from '../selector-card/selector-card/selector.card.component';
 @Component({
   selector: 'app-display',
   templateUrl: './display.component.html',
@@ -27,12 +26,13 @@ export class DisplayComponent implements OnInit {
   arrPagesSize = [5,10,20];
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
+  selectedRow = null;
   selectedRowIndex = -1;
   prevSelectedRowIndex = -1;
   message = "נתונים נטענו בהצלחה";
   action = "סגור";
 
-  constructor(private crudService: CrudService, public snackBar: MatSnackBar) { }
+  constructor(private crudService: CrudService, public snackBar: MatSnackBar, public dialog: MatDialog) { }
 
   ngOnInit() {
     
@@ -45,7 +45,7 @@ export class DisplayComponent implements OnInit {
     this.dataSource.sort = this.sort;
   }
 
-  loadData(){
+  loadData(): void{
 
     this.crudService.getSelectors().then((result : any) => {
       this.dataSource.data = result;
@@ -64,13 +64,14 @@ export class DisplayComponent implements OnInit {
       this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
-  onSelectRow(row){
+  onSelectRow(row) : void{
 
+    this.selectedRow = row;
     this.prevSelectedRowIndex = this.selectedRowIndex;
     this.selectedRowIndex = row.id;
   }
 
-  isSelectedRow(row){
+  isSelectedRow<Boolean>(row){
 
     let bIsSelectedRow = this.selectedRowIndex == row.id;
     let bIsToggle = false;
@@ -89,9 +90,22 @@ export class DisplayComponent implements OnInit {
     return ((bIsSelectedRow) && (!bIsToggle));
   }
 
-  openSnackBar(message: string, action: string) {
+  openSnackBar(message: string, action: string): void {
     this.snackBar.open(message, action, {
-      duration: 2000,
+      duration: 3000,
+    });
+  }
+
+  openSelectorCard(): void {
+    let dialogRef = this.dialog.open(SelectorCardComponent, {
+      width: '650px',
+      height: '450px',
+      data: { 'selector': this.selectedRow }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+     
     });
   }
 }

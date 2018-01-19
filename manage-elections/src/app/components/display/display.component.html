@@ -8,6 +8,9 @@
         <div style="margin-top: 2%;">           
             <mat-icon (click)="loadData()" style="cursor: pointer;font-size: 30px;">refresh</mat-icon>
         </div>
+        <div style="margin-top: 2%;">           
+            <mat-icon (click)="openSelectorCard()" style="cursor: pointer;font-size: 30px;">add</mat-icon>
+        </div>
     </div>
     
     <mat-table #table [dataSource]="dataSource" matSort style="cursor: context-menu;">
